@@ -1,6 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
+const path = require("path");
 const PORT = process.env.PORT || 5500;
 
 const app = express();
@@ -13,7 +14,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // API Routes
-app.use("/api", require("./apiRoutes"));
+app.use("/api", require("./api"));
 
 // Static File Middleware
 app.use(express.static(path.join(__dirname, "../public")));
@@ -31,7 +32,7 @@ app.use(function (err, req, res, next) {
 });
 
 // Listen and start server on PORT 5500
-app.listen(port, function () {
+app.listen(PORT, function () {
   console.log("The server smiles upon you");
   console.log("Hello");
   console.log(`Your server, listening on port ${PORT}`);
