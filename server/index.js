@@ -13,8 +13,7 @@ app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// API Routes
-app.use("/api", require("./api"));
+// API Routes if I used them
 
 // Static File Middleware
 app.use(express.static(path.join(__dirname, "../public")));
