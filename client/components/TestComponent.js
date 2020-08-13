@@ -3,13 +3,18 @@ import { connect } from "react-redux";
 import { createGrid, randomGrid } from "../helperFuncs";
 import { conway } from "../rulesetAlgos/conway";
 
-const TestComponent = (props) => {
-  const someTestGrid = randomGrid(10, 10);
-  console.table(someTestGrid);
-  console.table(conway(someTestGrid));
+class TestComponent extends React.Component {
+  constructor() {
+    super();
+  }
 
-  return <div>Hello World</div>;
-};
+  render() {
+    const someTestGrid = randomGrid(10, 10);
+    console.table(someTestGrid);
+    console.table(conway(someTestGrid));
+    return <div>Hello World</div>;
+  }
+}
 
 const mapStateToProps = (state) => ({
   state: state.testState,

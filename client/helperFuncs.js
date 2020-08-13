@@ -10,6 +10,7 @@ export const createGrid = (height, width) => {
   return grid;
 };
 
+// Create a randomly filled 2d grid
 export const randomGrid = (height, width) => {
   const grid = [];
   for (let i = 0; i < height; i++) {
@@ -21,6 +22,8 @@ export const randomGrid = (height, width) => {
   return grid;
 };
 
+// Count neighbors of a specific cell
+// Also makes the grid act like a toroidal array
 export const countNeighbours = (grid, i, j) => {
   const gridHeight = grid.length;
   const gridWidth = grid[0].length;
