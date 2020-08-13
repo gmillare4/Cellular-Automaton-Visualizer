@@ -1,9 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-import { createGrid } from "../helperFuncs";
+import { createGrid, randomGrid } from "../helperFuncs";
+import { conway } from "../rulesetAlgos/conway";
 
 const TestComponent = (props) => {
-  console.table(createGrid(30, 30));
+  const someTestGrid = randomGrid(10, 10);
+  console.table(someTestGrid);
+  console.table(conway(someTestGrid));
+
   return <div>Hello World</div>;
 };
 
