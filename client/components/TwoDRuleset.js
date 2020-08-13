@@ -13,8 +13,13 @@ class twoDRuleset extends React.Component {
     const randomTestGrid = randomGrid(10, 10);
     this.props.thunkGetGeneration(randomTestGrid);
   }
-  playHandler() {
+  runNewGen() {
     this.props.thunkGetGeneration(conway(this.props.state));
+    window.setTimeout(() => this.runNewGen(), 300);
+  }
+  playHandler() {
+    // this.props.thunkGetGeneration(conway(this.props.state));
+    this.runNewGen();
   }
   render() {
     console.log(this.props.state);
@@ -24,16 +29,16 @@ class twoDRuleset extends React.Component {
     return (
       <div>
         <div>Hello World</div>
-        <table>
+        <table className="grid">
           <tbody>
             {this.props.state.map((row) => {
               return (
                 <tr>
                   {row.map((cell) => {
                     if (cell === 1) {
-                      return <td>1</td>;
+                      return <td className="cell cell-alive">1</td>;
                     } else {
-                      return <td>0</td>;
+                      return <td className="cell cell-dead">0</td>;
                     }
                   })}
                 </tr>

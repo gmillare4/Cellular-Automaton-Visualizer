@@ -1,0 +1,17 @@
+.grid {
+  border: 1px solid black;
+}
+.cell {
+  border: 1px solid black;
+  width: 50px;
+  height: 50px;
+}
+
+.cell-alive {
+  background-color: green;
+  color: green;
+}
+
+.cell-dead {
+  color: white;
+}
