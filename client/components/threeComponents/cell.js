@@ -1,8 +1,7 @@
 import React, { useRef } from "react";
 import { Canvas, useFrame } from "react-three-fiber";
 
-// function Dolly() {
-//   // This one makes the camera move in and out
+// function Cam() {
 //   useFrame(({ clock, camera }) =>
 //     camera.updateProjectionMatrix(
 //       (camera.position.y = 0 + Math.sin(clock.getElapsedTime()) * 3),
@@ -35,21 +34,26 @@ const Box = ({ position }) => {
 
 // const rotSpeed = 0.02;
 export const CellBox = (props) => {
-  console.log(props.props);
   return (
     <>
-      <h1>Hello from cell</h1>
-      <Canvas colorManagement camera={{ position: [10, 80, 50], fov: 50 }}>
+      <h3>Hello from cell</h3>
+      <Canvas
+        style={{ height: 550, width: 550 }}
+        colorManagement
+        camera={{ position: [10, 80, 30], fov: 60 }}
+      >
         <ambientLight intensity={0.8} />
+        {/* <pointLight position={(-25, 30, -35)} intensity={0.5} />
+        <pointLight position={(0, 10, 0)} intensity={1.5} /> */}
         {props.props.map((height, i) => {
           return height.map((width, j) => {
             if (width === 1) {
-              return <Box position={[i, 50, j]} />;
+              return <Box position={[j - 25, 30, i - 25]} />;
             }
           });
         })}
         {/* <Box position={[0, 1, 0]} /> */}
-        {/* <Dolly /> */}
+        {/* <Cam /> */}
       </Canvas>
     </>
   );
