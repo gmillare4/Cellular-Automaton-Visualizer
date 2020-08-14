@@ -23,7 +23,7 @@ class twoDRuleset extends React.Component {
     this.runNewGen();
   }
   render() {
-    console.log(this.props.state);
+    // console.log(this.props.state);
     // const someTestGrid = randomGrid(10, 10);
     // console.table(someTestGrid);
     // console.table(conway(someTestGrid));
@@ -48,7 +48,7 @@ class twoDRuleset extends React.Component {
           </tbody>
         </table>
         <button onClick={this.playHandler}>Play</button>
-        <CellBox />
+        <CellBox props={this.props.state} />
       </div>
     );
   }
