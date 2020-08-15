@@ -19,6 +19,7 @@ const Box = ({ position }) => {
 };
 
 export const CellBox = (props) => {
+  // console.log("cell props", props);
   return (
     <>
       <h3>Hello from cell</h3>
@@ -30,13 +31,23 @@ export const CellBox = (props) => {
         <ambientLight intensity={0.8} />
         {/* <pointLight position={(-25, 30, -35)} intensity={0.5} />
         <pointLight position={(0, 10, 0)} intensity={1.5} /> */}
-        {props.props.map((height, i) => {
+        {props.props.map((depth, k) => {
+          return depth.map((height, i) => {
+            return height.map((width, j) => {
+              if (width === 1) {
+                return <Box position={[j - 20, 30 - k, i - 20]} />;
+              }
+            });
+          });
+        })}
+
+        {/* {props.props.map((height, i) => {
           return height.map((width, j) => {
             if (width === 1) {
               return <Box position={[j - 20, 30, i - 20]} />;
             }
           });
-        })}
+        })} */}
         <OrbitControls />
       </Canvas>
     </>
