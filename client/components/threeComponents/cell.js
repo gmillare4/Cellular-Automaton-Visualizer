@@ -2,21 +2,6 @@ import React, { useRef } from "react";
 import { Canvas, useFrame } from "react-three-fiber";
 import { OrbitControls } from "drei";
 
-// function Cam() {
-//   useFrame(({ clock, camera }) =>
-//     camera.updateProjectionMatrix(
-//       (camera.position.y = 0 + Math.sin(clock.getElapsedTime()) * 3),
-//       (camera.position.x = 5 + clock.getElapsedTime() * 3)
-//       //   (camera.position.x =
-//       //     camera.position.x * Math.cos(rotSpeed) -
-//       //     camera.position.z * Math.sin(rotSpeed)),
-//       //   (camera.position.z =
-//       //     camera.position.z * Math.cos(rotSpeed) +
-//       //     camera.position.x * Math.sin(rotSpeed))
-//     )
-//   );
-//   return null;
-// }
 const Box = ({ position }) => {
   //   const mesh = useRef(null);
   //   useFrame(() => {
@@ -33,13 +18,12 @@ const Box = ({ position }) => {
   );
 };
 
-// const rotSpeed = 0.02;
 export const CellBox = (props) => {
   return (
     <>
       <h3>Hello from cell</h3>
       <Canvas
-        style={{ height: 550, width: 550 }}
+        style={{ height: 400, width: 400 }}
         colorManagement
         camera={{ position: [0, 80, 0], fov: 60 }}
       >
@@ -49,26 +33,12 @@ export const CellBox = (props) => {
         {props.props.map((height, i) => {
           return height.map((width, j) => {
             if (width === 1) {
-              return <Box position={[j - 25, 30, i - 25]} />;
+              return <Box position={[j - 20, 30, i - 20]} />;
             }
           });
         })}
-        {/* <Box position={[0, 1, 0]} /> */}
-        {/* <Cam /> */}
         <OrbitControls />
       </Canvas>
     </>
   );
 };
-/* 
-// set up orbit controls
-const controls = new OrbitControls(camera, canvas);
-controls.autoRotate = true;
-controls.autoRotateSpeed = 0.5;
-controls.target.set(0, 0, 0);
-controls.update();
-
-
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-
-*/

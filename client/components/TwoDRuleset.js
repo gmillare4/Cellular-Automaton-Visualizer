@@ -11,7 +11,7 @@ class twoDRuleset extends React.Component {
     this.playHandler = this.playHandler.bind(this);
   }
   componentDidMount() {
-    const randomTestGrid = randomGrid(50, 50);
+    const randomTestGrid = randomGrid(40, 40);
     this.props.thunkGetGeneration(randomTestGrid);
   }
   runNewGen() {
