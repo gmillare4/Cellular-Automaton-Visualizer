@@ -19,7 +19,6 @@ class twoDRuleset extends React.Component {
     window.setTimeout(() => this.runNewGen(), 100);
   }
   playHandler() {
-    // this.props.thunkGetGeneration(conway(this.props.state));
     this.runNewGen();
   }
   render() {

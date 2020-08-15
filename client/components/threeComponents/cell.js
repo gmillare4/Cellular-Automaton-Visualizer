@@ -58,3 +58,15 @@ export const CellBox = (props) => {
     </>
   );
 };
+/* 
+// set up orbit controls
+const controls = new OrbitControls(camera, canvas);
+controls.autoRotate = true;
+controls.autoRotateSpeed = 0.5;
+controls.target.set(0, 0, 0);
+controls.update();
+
+
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+
+*/
