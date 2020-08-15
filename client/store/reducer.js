@@ -15,7 +15,7 @@ const initialState = {
 export default function dummyReducer(state = initialState, action) {
   switch (action.type) {
     case GET_GEN:
-      if (state.generation.length === 40) {
+      if (state.generation.length === 20) {
         return {
           ...state,
           generation: [

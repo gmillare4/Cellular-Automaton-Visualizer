@@ -11,12 +11,12 @@ class twoDRuleset extends React.Component {
     this.playHandler = this.playHandler.bind(this);
   }
   componentDidMount() {
-    const randomTestGrid = randomGrid(40, 40);
+    const randomTestGrid = randomGrid(20, 20);
     this.props.thunkGetGeneration(randomTestGrid);
   }
   runNewGen() {
     this.props.thunkGetGeneration(conway(this.props.state[0]));
-    window.setTimeout(() => this.runNewGen(), 500);
+    window.setTimeout(() => this.runNewGen(), 100);
   }
   playHandler() {
     this.runNewGen();
@@ -38,7 +38,7 @@ class twoDRuleset extends React.Component {
                     if (cell === 1) {
                       return <td className="cell cell-alive"></td>;
                     } else {
-                      return <td className="cell cell-dead"></td>;
+                      return <td className="cell"></td>;
                     }
                   })}
                 </tr>

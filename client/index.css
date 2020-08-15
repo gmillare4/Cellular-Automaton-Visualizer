@@ -9,9 +9,9 @@
 
 .cell-alive {
   background-color: green;
-  color: green;
+  /* color: green; */
 }
 
-.cell-dead {
+/* .cell-dead {
   color: white;
-}
+} */
