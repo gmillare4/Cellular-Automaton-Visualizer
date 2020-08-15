@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "drei": "0.0.72",
     "express": "^4.17.1",
     "express-logger": "0.0.3",
     "morgan": "^1.10.0",

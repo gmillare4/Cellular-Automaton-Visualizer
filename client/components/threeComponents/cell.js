@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { Canvas, useFrame } from "react-three-fiber";
+import { OrbitControls } from "drei";
 
 // function Cam() {
 //   useFrame(({ clock, camera }) =>
@@ -40,7 +41,7 @@ export const CellBox = (props) => {
       <Canvas
         style={{ height: 550, width: 550 }}
         colorManagement
-        camera={{ position: [10, 80, 30], fov: 60 }}
+        camera={{ position: [0, 80, 0], fov: 60 }}
       >
         <ambientLight intensity={0.8} />
         {/* <pointLight position={(-25, 30, -35)} intensity={0.5} />
@@ -54,6 +55,7 @@ export const CellBox = (props) => {
         })}
         {/* <Box position={[0, 1, 0]} /> */}
         {/* <Cam /> */}
+        <OrbitControls />
       </Canvas>
     </>
   );
