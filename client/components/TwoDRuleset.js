@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { createGrid, randomGrid, random3dGrid } from "../helperFuncs";
 import { conway } from "../rulesetAlgos/conway";
-import { thunkGetGeneration } from "../store/reducer";
+import { thunkGetGeneration, thunkInitGrid } from "../store/reducer";
 import { CellBox } from "./threeComponents/cell";
 
 class twoDRuleset extends React.Component {
@@ -11,8 +11,8 @@ class twoDRuleset extends React.Component {
     this.playHandler = this.playHandler.bind(this);
   }
   componentDidMount() {
-    const randomTestGrid = randomGrid(20, 20);
-    this.props.thunkGetGeneration(randomTestGrid);
+    const randomTestGrid = random3dGrid(20, 20);
+    this.props.thunkInitGrid(randomTestGrid);
   }
   runNewGen() {
     this.props.thunkGetGeneration(conway(this.props.state[0]));
@@ -23,10 +23,6 @@ class twoDRuleset extends React.Component {
   }
   render() {
     const newestGen = this.props.state[0];
-    console.log("random3dgrid", random3dGrid(20, 20));
-    // const someTestGrid = randomGrid(10, 10);
-    // console.table(someTestGrid);
-    // console.table(conway(someTestGrid));
     return (
       <div>
         <div>Hello World</div>
@@ -60,6 +56,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   thunkGetGeneration: (currGen) => dispatch(thunkGetGeneration(currGen)),
+  thunkInitGrid: (grid) => dispatch(thunkInitGrid(grid)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(twoDRuleset);
