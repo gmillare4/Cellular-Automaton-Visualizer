@@ -10,6 +10,13 @@ export const createGrid = (height, width) => {
   return grid;
 };
 
+class newCell {
+  constructor(value, id) {
+    this.value = value;
+    this.id = id;
+  }
+}
+
 // Create a randomly filled 2d grid
 export const randomGrid = (height, width) => {
   const grid = [];
@@ -17,6 +24,29 @@ export const randomGrid = (height, width) => {
     grid.push([]);
     for (let j = 0; j < width; j++) {
       grid[i].push(Math.floor(Math.random() * 2));
+    }
+  }
+  return grid;
+};
+
+// Create a 3d grid with a random first generation
+export const random3dGrid = (height, width) => {
+  const grid = [];
+  let id = 1;
+  for (let i = 0; i < height; i++) {
+    grid.push([]);
+    for (let j = 0; j < width; j++) {
+      grid[i].push([]);
+      for (let k = 0; k < height; k++) {
+        if (i === 0) {
+          const cell = new newCell(Math.floor(Math.random() * 2), id);
+          grid[i][j].push(cell);
+        } else {
+          const cell = new newCell(0, id);
+          grid[i][j].push(cell);
+        }
+        id++;
+      }
     }
   }
   return grid;

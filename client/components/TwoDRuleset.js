@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { createGrid, randomGrid } from "../helperFuncs";
+import { createGrid, randomGrid, random3dGrid } from "../helperFuncs";
 import { conway } from "../rulesetAlgos/conway";
 import { thunkGetGeneration } from "../store/reducer";
 import { CellBox } from "./threeComponents/cell";
@@ -23,6 +23,7 @@ class twoDRuleset extends React.Component {
   }
   render() {
     const newestGen = this.props.state[0];
+    console.log("random3dgrid", random3dGrid(20, 20));
     // const someTestGrid = randomGrid(10, 10);
     // console.table(someTestGrid);
     // console.table(conway(someTestGrid));

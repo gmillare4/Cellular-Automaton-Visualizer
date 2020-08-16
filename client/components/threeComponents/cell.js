@@ -18,6 +18,29 @@ const Box = ({ position }) => {
   );
 };
 
+// const ref = useRef();
+// useFrame((state) => {
+//   // const time = state.clock.getElapsedTime()
+//   // ref.current.rotation.x = Math.sin(time / 4)
+//   // ref.current.rotation.y = Math.sin(time / 2)
+//   let i = 0;
+//   for (let x = 0; x < 10; x++)
+//     for (let y = 0; y < 10; y++)
+//       for (let z = 0; z < 10; z++) {
+//         const id = i++;
+//         tempObject.position.set(x - 10, 10 - y, z - 10);
+//         if (hovered !== previous.current) {
+//           tempColor
+//             .set(id === hovered ? "white" : colors[id])
+//             .toArray(colorArray, id * 3);
+//           ref.current.geometry.attributes.color.needsUpdate = true;
+//         }
+//         tempObject.updateMatrix();
+//         ref.current.setMatrixAt(id, tempObject.matrix);
+//       }
+//   ref.current.instanceMatrix.needsUpdate = true;
+// });
+
 export const CellBox = (props) => {
   // console.log("cell props", props);
   // const firstLayer = props.props[0];
