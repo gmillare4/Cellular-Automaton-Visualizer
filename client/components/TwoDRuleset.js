@@ -7,7 +7,11 @@ import {
   create3dGrid,
 } from "../helperFuncs";
 import { conway } from "../rulesetAlgos/conway";
-import { thunkGetGeneration, thunkInitGrid } from "../store/reducer";
+import {
+  thunkGetGeneration,
+  thunkInitGrid,
+  thunkChangeCell,
+} from "../store/reducer";
 import { CellBox } from "./threeComponents/cell";
 
 class twoDRuleset extends React.Component {
@@ -48,6 +52,9 @@ class twoDRuleset extends React.Component {
     const cleared3DGrid = create3dGrid(20, 20);
     this.props.thunkInitGrid(cleared3DGrid);
   }
+  clickHandler(i, j) {
+    this.props.thunkChangeCell(i, j);
+  }
   render() {
     const newestGen = this.props.grid[0];
     return (
@@ -57,14 +64,24 @@ class twoDRuleset extends React.Component {
           <div>
             <table className="grid">
               <tbody>
-                {newestGen.map((row) => {
+                {newestGen.map((row, i) => {
                   return (
                     <tr>
-                      {row.map((cell) => {
+                      {row.map((cell, j) => {
                         if (cell === 1) {
-                          return <td className="cell cell-alive"></td>;
+                          return (
+                            <td
+                              className="cell cell-alive"
+                              onMouseDown={() => this.clickHandler(i, j)}
+                            ></td>
+                          );
                         } else {
-                          return <td className="cell"></td>;
+                          return (
+                            <td
+                              className="cell"
+                              onMouseDown={() => this.clickHandler(i, j)}
+                            ></td>
+                          );
                         }
                       })}
                     </tr>
@@ -90,6 +107,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   thunkGetGeneration: (currGen) => dispatch(thunkGetGeneration(currGen)),
   thunkInitGrid: (grid) => dispatch(thunkInitGrid(grid)),
+  thunkChangeCell: (i, j) => dispatch(thunkChangeCell(i, j)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(twoDRuleset);
