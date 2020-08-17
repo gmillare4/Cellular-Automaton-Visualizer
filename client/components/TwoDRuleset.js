@@ -1,6 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { createGrid, randomGrid, random3dGrid } from "../helperFuncs";
+import {
+  createGrid,
+  randomGrid,
+  random3dGrid,
+  create3dGrid,
+} from "../helperFuncs";
 import { conway } from "../rulesetAlgos/conway";
 import { thunkGetGeneration, thunkInitGrid } from "../store/reducer";
 import { CellBox } from "./threeComponents/cell";
@@ -13,6 +18,7 @@ class twoDRuleset extends React.Component {
     };
     this.playHandler = this.playHandler.bind(this);
     this.pauseHandler = this.pauseHandler.bind(this);
+    this.clearHandler = this.clearHandler.bind(this);
   }
   componentDidMount() {
     const randomTestGrid = random3dGrid(20, 20);
@@ -37,6 +43,10 @@ class twoDRuleset extends React.Component {
     this.setState({
       running: false,
     });
+  }
+  clearHandler() {
+    const cleared3DGrid = create3dGrid(20, 20);
+    this.props.thunkInitGrid(cleared3DGrid);
   }
   render() {
     const newestGen = this.props.grid[0];
@@ -64,6 +74,7 @@ class twoDRuleset extends React.Component {
             </table>
             <button onClick={this.playHandler}>Play</button>
             <button onClick={this.pauseHandler}>Pause</button>
+            <button onClick={this.clearHandler}>Clear</button>
           </div>
           <CellBox props={this.props.grid} />
         </div>

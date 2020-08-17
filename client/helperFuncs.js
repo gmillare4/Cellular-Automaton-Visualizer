@@ -49,6 +49,22 @@ export const random3dGrid = (height, width) => {
   return grid;
 };
 
+// Init Empty 3d grid
+export const create3dGrid = (height, width) => {
+  const grid = [];
+  // let id = 1;
+  for (let i = 0; i < height; i++) {
+    grid.push([]);
+    for (let j = 0; j < width; j++) {
+      grid[i].push([]);
+      for (let k = 0; k < height; k++) {
+        grid[i][j].push(0);
+      }
+    }
+  }
+  return grid;
+};
+
 // Count neighbors of a specific cell
 // Also makes the grid act like a toroidal array
 export const countNeighbours = (grid, i, j) => {
