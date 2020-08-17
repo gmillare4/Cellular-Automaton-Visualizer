@@ -23,6 +23,7 @@ class twoDRuleset extends React.Component {
     this.playHandler = this.playHandler.bind(this);
     this.pauseHandler = this.pauseHandler.bind(this);
     this.clearHandler = this.clearHandler.bind(this);
+    this.randomHandler = this.randomHandler.bind(this);
   }
   componentDidMount() {
     const randomTestGrid = random3dGrid(20, 20);
@@ -51,6 +52,10 @@ class twoDRuleset extends React.Component {
   clearHandler() {
     const cleared3DGrid = create3dGrid(20, 20);
     this.props.thunkInitGrid(cleared3DGrid);
+  }
+  randomHandler() {
+    const randomTestGrid = random3dGrid(20, 20);
+    this.props.thunkInitGrid(randomTestGrid);
   }
   clickHandler(i, j) {
     this.props.thunkChangeCell(i, j);
@@ -97,6 +102,9 @@ class twoDRuleset extends React.Component {
             </button>
             <button className="myButton" onClick={this.clearHandler}>
               Clear
+            </button>
+            <button className="myButton" onClick={this.randomHandler}>
+              Random
             </button>
           </div>
           <CellBox props={this.props.grid} />
