@@ -36,7 +36,7 @@ const Box = ({ position, color }) => {
       position={position}
       // ref={mesh}
     >
-      <boxBufferGeometry attach="geometry" args={[0.8, 0.8, 0.8]} />
+      <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
       <meshStandardMaterial attach="material" color={color} />
     </mesh>
   );
@@ -108,7 +108,6 @@ export const CellBox = (props) => {
   // // const firstLayer = props.props[0];
   return (
     <>
-      <h3>Hello from cell</h3>
       <Canvas
         style={{ height: 400, width: 400 }}
         colorManagement

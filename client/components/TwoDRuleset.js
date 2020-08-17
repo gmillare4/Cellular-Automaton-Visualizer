@@ -8,50 +8,72 @@ import { CellBox } from "./threeComponents/cell";
 class twoDRuleset extends React.Component {
   constructor() {
     super();
+    this.state = {
+      running: false,
+    };
     this.playHandler = this.playHandler.bind(this);
+    this.pauseHandler = this.pauseHandler.bind(this);
   }
   componentDidMount() {
     const randomTestGrid = random3dGrid(20, 20);
     this.props.thunkInitGrid(randomTestGrid);
   }
   runNewGen() {
-    this.props.thunkGetGeneration(conway(this.props.state[0]));
-    window.setTimeout(() => this.runNewGen(), 100);
+    const timeout = window.setTimeout(() => this.runNewGen(), 100);
+    if (this.state.running === false) {
+      clearTimeout(timeout);
+    } else {
+      this.props.thunkGetGeneration(conway(this.props.grid[0]));
+      timeout = window.setTimeout(() => this.runNewGen(), 100);
+    }
   }
   playHandler() {
+    this.setState({
+      running: true,
+    });
     this.runNewGen();
   }
+  pauseHandler() {
+    this.setState({
+      running: false,
+    });
+  }
   render() {
-    const newestGen = this.props.state[0];
+    const newestGen = this.props.grid[0];
     return (
       <div>
         <div>Hello World</div>
-        <table className="grid">
-          <tbody>
-            {newestGen.map((row) => {
-              return (
-                <tr>
-                  {row.map((cell) => {
-                    if (cell === 1) {
-                      return <td className="cell cell-alive"></td>;
-                    } else {
-                      return <td className="cell"></td>;
-                    }
-                  })}
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-        <button onClick={this.playHandler}>Play</button>
-        <CellBox props={this.props.state} />
+        <div className="grid-container">
+          <div>
+            <table className="grid">
+              <tbody>
+                {newestGen.map((row) => {
+                  return (
+                    <tr>
+                      {row.map((cell) => {
+                        if (cell === 1) {
+                          return <td className="cell cell-alive"></td>;
+                        } else {
+                          return <td className="cell"></td>;
+                        }
+                      })}
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+            <button onClick={this.playHandler}>Play</button>
+            <button onClick={this.pauseHandler}>Pause</button>
+          </div>
+          <CellBox props={this.props.grid} />
+        </div>
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  state: state.generation,
+  grid: state.generation,
 });
 
 const mapDispatchToProps = (dispatch) => ({
