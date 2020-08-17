@@ -1,8 +1,32 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Canvas, useFrame } from "react-three-fiber";
 import { OrbitControls } from "drei";
+import * as THREE from "three";
 
-const Box = ({ position }) => {
+const colorArr = [
+  "#006400",
+  "#0c6808",
+  "#166c11",
+  "#1d6f18",
+  "#24731f",
+  "#2a7725",
+  "#307b2b",
+  "#357f31",
+  "#3b8336",
+  "#40873c",
+  "#458b41",
+  "#4a8e47",
+  "#4f924c",
+  "#559652",
+  "#5a9a57",
+  "#5f9e5d",
+  "#64a262",
+  "#69a668",
+  "#6eaa6d",
+  "#73ae73",
+];
+
+const Box = ({ position, color }) => {
   //   const mesh = useRef(null);
   //   useFrame(() => {
   //     mesh.current.rotation.x = mesh.current.rotation.y += 0.01;
@@ -12,38 +36,76 @@ const Box = ({ position }) => {
       position={position}
       // ref={mesh}
     >
-      <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
-      <meshStandardMaterial attach="material" color="green" />
+      <boxBufferGeometry attach="geometry" args={[0.8, 0.8, 0.8]} />
+      <meshStandardMaterial attach="material" color={color} />
     </mesh>
   );
 };
-
-// const ref = useRef();
-// useFrame((state) => {
-//   // const time = state.clock.getElapsedTime()
-//   // ref.current.rotation.x = Math.sin(time / 4)
-//   // ref.current.rotation.y = Math.sin(time / 2)
-//   let i = 0;
-//   for (let x = 0; x < 10; x++)
-//     for (let y = 0; y < 10; y++)
-//       for (let z = 0; z < 10; z++) {
-//         const id = i++;
-//         tempObject.position.set(x - 10, 10 - y, z - 10);
-//         if (hovered !== previous.current) {
-//           tempColor
-//             .set(id === hovered ? "white" : colors[id])
-//             .toArray(colorArray, id * 3);
-//           ref.current.geometry.attributes.color.needsUpdate = true;
-//         }
-//         tempObject.updateMatrix();
-//         ref.current.setMatrixAt(id, tempObject.matrix);
-//       }
-//   ref.current.instanceMatrix.needsUpdate = true;
+/* 
+  const material = new THREE.MeshPhongMaterial({
+    color,
+    opacity: 0.5,
+    transparent: true,
+  });
+ 
+  const cube = new THREE.Mesh(geometry, material);
+  scene.add(cube);
+ 
+  cube.position.set(x, y, z);
+*/
+// const geometry = new THREE.BoxGeometry(1, 1, 1);
+// const material = new THREE.meshStandardMaterial({
+//   color,
+//   opacity: 0.5,
+//   transparent: true,
 // });
+const tempObject = new THREE.Object3D();
+
+const Boxes = (props) => {
+  const cubeArr = props.props.props;
+  // useEffect(() => {return props.props.props})
+  const [set] = useState();
+  const ref = useRef();
+  // console.log("tempObj", tempObject);
+  useFrame((state) => {
+    let i = 0;
+    for (let y = 0; y < 20; y++)
+      for (let z = 0; z < 20; z++)
+        for (let x = 0; x < 20; x++) {
+          const id = i++;
+          tempObject.position.set(x - 10, 10 - y, z - 10);
+          if (cubeArr[y][z][x] === 1) {
+            tempObject.visible = true;
+          } else if (cubeArr[y][z][x] === 0) {
+            tempObject.visible = false;
+          }
+
+          ref.current.material.visible.needsUpdate = true;
+          // ref.current.visible.needsUpdate = true;
+          tempObject.updateMatrix();
+          ref.current.setMatrixAt(id, tempObject.matrix);
+        }
+    ref.current.instanceMatrix.needsUpdate = true;
+    console.log("cubearr", cubeArr);
+  });
+  return (
+    <instancedMesh ref={ref} args={[null, null, 8000]}>
+      <boxBufferGeometry attach="geometry" args={[0.5, 0.5, 0.5]} />
+      <meshPhongMaterial
+        attach="material"
+        color="green"
+        transparent={true}
+        opacity={1}
+      >
+        <instancedBufferAttribute attachObject={["visible"]} args={[false]} />
+      </meshPhongMaterial>
+    </instancedMesh>
+  );
+};
 
 export const CellBox = (props) => {
   // console.log("cell props", props);
-  // const firstLayer = props.props[0];
+  // // const firstLayer = props.props[0];
   return (
     <>
       <h3>Hello from cell</h3>
@@ -56,25 +118,21 @@ export const CellBox = (props) => {
         <directionalLight position={[0, 50, 0]} intensity={0.8} />
         <pointLight position={[0, 20, 20]} intensity={0.5} />
         <pointLight position={[0, -30, 0]} intensity={1.5} />
-        {/* <pointLight position={(-25, 30, -35)} intensity={0.5} />
-        <pointLight position={(0, 10, 0)} intensity={1.5} /> */}
         {props.props.map((depth, k) => {
           return depth.map((height, i) => {
             return height.map((width, j) => {
               if (width === 1) {
-                return <Box position={[j - 10, 10 - k, i - 10]} />;
+                return (
+                  <Box
+                    position={[j - 10, 10 - k, i - 10]}
+                    color={colorArr[k]}
+                  />
+                );
               }
             });
           });
         })}
-
-        {/* {firstLayer.map((height, i) => {
-          return height.map((width, j) => {
-            if (width === 1) {
-              return <Box position={[j - 20, 30, i - 20]} />;
-            }
-          });
-        })} */}
+        {/* <Boxes props={props} /> */}
         <OrbitControls />
       </Canvas>
     </>
