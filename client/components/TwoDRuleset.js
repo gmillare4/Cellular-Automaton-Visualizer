@@ -89,9 +89,15 @@ class twoDRuleset extends React.Component {
                 })}
               </tbody>
             </table>
-            <button onClick={this.playHandler}>Play</button>
-            <button onClick={this.pauseHandler}>Pause</button>
-            <button onClick={this.clearHandler}>Clear</button>
+            <button className="myButton" onClick={this.playHandler}>
+              Play
+            </button>
+            <button className="myButton" onClick={this.pauseHandler}>
+              Pause
+            </button>
+            <button className="myButton" onClick={this.clearHandler}>
+              Clear
+            </button>
           </div>
           <CellBox props={this.props.grid} />
         </div>
