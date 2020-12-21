@@ -20,3 +20,12 @@ To deploy locally:
 1. npm install
 2. npm run start-server
 3. open locally on port 5500
+
+Functionality:
+
+- Play button starts simulation
+- Pause button pauses simulation
+- Clear button clears simulation
+- Random button clears simulation and initializes a random first generation of cells
+- Click on cells to alter whether they are dead or alive (First generation)
+- Camera controls by clicking and dragging the mouse to rotate the 3D grid and using the mousewheel to zoom in/out
