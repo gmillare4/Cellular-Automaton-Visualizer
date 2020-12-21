@@ -9,5 +9,5 @@ ReactDom.render(
   <Provider store={store}>
     <TwoDRuleset />
   </Provider>,
-  document.getElementById("app") // Same id='app' in our static HTML
+  document.getElementById("app") // Same id='app' in the static HTML
 );

@@ -39,7 +39,13 @@ export const random3dGrid = (height, width) => {
       grid[i].push([]);
       for (let k = 0; k < height; k++) {
         if (i === 0) {
-          grid[i][j].push(Math.floor(Math.random() * 2));
+          let randomNum = Math.floor(Math.random() * 4);
+          if (randomNum === 0) {
+            grid[i][j].push(1);
+          } else {
+            grid[i][j].push(0);
+          }
+          // grid[i][j].push(Math.floor(Math.random() * 2));
         } else {
           grid[i][j].push(0);
         }

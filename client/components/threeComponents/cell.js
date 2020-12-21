@@ -109,9 +109,9 @@ export const CellBox = (props) => {
   return (
     <>
       <Canvas
-        style={{ height: 400, width: 400 }}
+        style={{ height: 550, width: 550 }}
         colorManagement
-        camera={{ position: [0, 40, 0], fov: 60 }}
+        camera={{ position: [0, 30, 0], fov: 60 }}
       >
         <ambientLight intensity={0.5} />
         <directionalLight position={[0, 50, 0]} intensity={0.8} />

@@ -3,18 +3,13 @@
 }
 .cell {
   border: 1px solid black;
-  width: 10px;
-  height: 10px;
+  width: 21px;
+  height: 21px;
 }
 
 .cell-alive {
   background-color: green;
-  /* color: green; */
 }
-
-/* .cell-dead {
-  color: white;
-} */
 
 .grid-container {
   display: grid;
@@ -23,26 +18,17 @@
 }
 
 .myButton {
-  box-shadow: 3px 4px 0px 0px #1564ad;
-  background: linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
-  background-color: #79bbff;
+  background-color: #378de5;
   border-radius: 5px;
-  border: 1px solid #337bc4;
-  display: inline-block;
+  border: 1.5px solid black;
   cursor: pointer;
   color: #ffffff;
   font-family: Arial;
   font-size: 17px;
   font-weight: bold;
-  padding: 12px 44px;
+  padding: 12px 40px;
   text-decoration: none;
-  text-shadow: 0px 1px 0px #528ecc;
 }
 .myButton:hover {
-  background: linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
-  background-color: #378de5;
-}
-.myButton:active {
-  position: relative;
-  top: 1px;
+  background-color: #79bbff;
 }

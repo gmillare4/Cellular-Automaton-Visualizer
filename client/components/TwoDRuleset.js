@@ -64,9 +64,8 @@ class twoDRuleset extends React.Component {
     const newestGen = this.props.grid[0];
     return (
       <div>
-        <div>Hello World</div>
         <div className="grid-container">
-          <div>
+          <div className="centerEl">
             <table className="grid">
               <tbody>
                 {newestGen.map((row, i) => {
@@ -107,7 +106,9 @@ class twoDRuleset extends React.Component {
               Random
             </button>
           </div>
-          <CellBox props={this.props.grid} />
+          <div className="centerEl">
+            <CellBox props={this.props.grid} />
+          </div>
         </div>
       </div>
     );
