@@ -1,10 +1,22 @@
+![Game of Life in 3D](public/GameOfLife3d.PNG)
+
 This project is a recreation of John Conway's famous cellular automaton ruleset, the Game of Life in 2D and 3D.
 
-React
+The main technologies used in this project are:
 ![React Logo](https://miro.medium.com/max/3600/1*HSisLuifMO6KbLfPOKtLow.jpeg)
-Redux
+
+React is used to render the standard Game of Life in 2D along with the button interface and the ability to click and alter an individual cell's state.
+
 ![Redux Logo](https://daqxzxzy8xq3u.cloudfront.net/wp-content/uploads/2019/04/21032431/redux-cover-imgage-1024x768.jpg)
-Three.js
+
+Redux is used as state management to store the state of each individual cell, whether they are dead or alive.
+
 ![Three.js Logo](https://ucarecdn.com/22a0a69b-689f-46c9-866b-57650f31fde9/)
 
-How to Navigate:
+Three.js is used to render the Game of Life in 3D.
+
+To deploy locally:
+
+1. npm install
+2. npm run start-server
+3. open locally on port 5500
