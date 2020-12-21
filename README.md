@@ -1,6 +1,6 @@
 ![Game of Life in 3D](public/GameOfLife3d.PNG)
 
-This project is a recreation of John Conway's famous cellular automaton ruleset, the Game of Life in 2D and 3D. On the left is a standard 2D visualization of the Game of Life and on the right is a 3D visualization in which the top most layer is the most recent generation reflected on the left and the lower layers are comprised of previous generations of cells stacked on top of each other.
+This project is a recreation of John Conway's famous cellular automaton ruleset, the Game of Life, in 2D and 3D. On the left is a standard 2D visualization of the Game of Life and on the right is a 3D visualization in which the top most layer is the most recent generation reflected on the left and the lower layers are comprised of previous generations of cells stacked on top of each other.
 
 The main technologies used in this project are:
 ![React Logo](https://miro.medium.com/max/3600/1*HSisLuifMO6KbLfPOKtLow.jpeg)
