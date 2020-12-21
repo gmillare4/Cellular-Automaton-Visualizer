@@ -1,11 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import {
-  createGrid,
-  randomGrid,
-  random3dGrid,
-  create3dGrid,
-} from "../helperFuncs";
+import { random3dGrid, create3dGrid } from "../helperFuncs";
 import { conway } from "../rulesetAlgos/conway";
 import {
   thunkGetGeneration,

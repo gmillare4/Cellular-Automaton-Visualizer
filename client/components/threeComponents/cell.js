@@ -27,46 +27,20 @@ const colorArr = [
 ];
 
 const Box = ({ position, color }) => {
-  //   const mesh = useRef(null);
-  //   useFrame(() => {
-  //     mesh.current.rotation.x = mesh.current.rotation.y += 0.01;
-  //   });
   return (
-    <mesh
-      position={position}
-      // ref={mesh}
-    >
+    <mesh position={position}>
       <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
       <meshStandardMaterial attach="material" color={color} />
     </mesh>
   );
 };
-/* 
-  const material = new THREE.MeshPhongMaterial({
-    color,
-    opacity: 0.5,
-    transparent: true,
-  });
- 
-  const cube = new THREE.Mesh(geometry, material);
-  scene.add(cube);
- 
-  cube.position.set(x, y, z);
-*/
-// const geometry = new THREE.BoxGeometry(1, 1, 1);
-// const material = new THREE.meshStandardMaterial({
-//   color,
-//   opacity: 0.5,
-//   transparent: true,
-// });
+
 const tempObject = new THREE.Object3D();
 
 const Boxes = (props) => {
   const cubeArr = props.props.props;
-  // useEffect(() => {return props.props.props})
   const [set] = useState();
   const ref = useRef();
-  // console.log("tempObj", tempObject);
   useFrame((state) => {
     let i = 0;
     for (let y = 0; y < 20; y++)
@@ -79,14 +53,11 @@ const Boxes = (props) => {
           } else if (cubeArr[y][z][x] === 0) {
             tempObject.visible = false;
           }
-
           ref.current.material.visible.needsUpdate = true;
-          // ref.current.visible.needsUpdate = true;
           tempObject.updateMatrix();
           ref.current.setMatrixAt(id, tempObject.matrix);
         }
     ref.current.instanceMatrix.needsUpdate = true;
-    console.log("cubearr", cubeArr);
   });
   return (
     <instancedMesh ref={ref} args={[null, null, 8000]}>
@@ -104,8 +75,6 @@ const Boxes = (props) => {
 };
 
 export const CellBox = (props) => {
-  // console.log("cell props", props);
-  // // const firstLayer = props.props[0];
   return (
     <>
       <Canvas
@@ -131,7 +100,6 @@ export const CellBox = (props) => {
             });
           });
         })}
-        {/* <Boxes props={props} /> */}
         <OrbitControls />
       </Canvas>
     </>

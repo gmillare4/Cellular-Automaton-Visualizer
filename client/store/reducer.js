@@ -53,13 +53,6 @@ export default function dummyReducer(state = initialState, action) {
     case INIT_3D_GRID:
       return { ...state, generation: action.grid };
     case CHANGE_CELL:
-      // let newCube = state.generation;
-      // if (state.generation[0][action.i][action.j] === 1) {
-      //   newCube[0][action.i][action.j] = 0;
-      // } else {
-      //   newCube[0][action.i][action.j] = 1;
-      // }
-      // return { ...state, generation: newCube };
       let val = 0;
       if (state.generation[0][action.i][action.j] === 0) {
         val = 1;
