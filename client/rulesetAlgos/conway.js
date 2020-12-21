@@ -5,12 +5,7 @@ Any live cell with two or three live neighbours lives on to the next generation.
 Any live cell with more than three live neighbours dies, as if by overpopulation.
 Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 */
-// 0 1 2 3 4 - 0
-// 0 1 2 3 4 - 1
-// 0 1 2 3 4 - 2
-// 0 1 2 3 4 - 3
-// 0 1 2 3 4 - 4
-//
+
 export const conway = (grid) => {
   let newGrid = [];
   for (let i = 0; i < grid.length; i++) {
