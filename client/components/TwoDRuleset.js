@@ -20,10 +20,12 @@ class twoDRuleset extends React.Component {
     this.clearHandler = this.clearHandler.bind(this);
     this.randomHandler = this.randomHandler.bind(this);
   }
+
   componentDidMount() {
     const randomTestGrid = random3dGrid(20, 20);
     this.props.thunkInitGrid(randomTestGrid);
   }
+
   runNewGen() {
     const timeout = window.setTimeout(() => this.runNewGen(), 100);
     if (this.state.running === false) {
@@ -33,28 +35,34 @@ class twoDRuleset extends React.Component {
       timeout = window.setTimeout(() => this.runNewGen(), 100);
     }
   }
+
   playHandler() {
     this.setState({
       running: true,
     });
     this.runNewGen();
   }
+
   pauseHandler() {
     this.setState({
       running: false,
     });
   }
+
   clearHandler() {
     const cleared3DGrid = create3dGrid(20, 20);
     this.props.thunkInitGrid(cleared3DGrid);
   }
+
   randomHandler() {
     const randomTestGrid = random3dGrid(20, 20);
     this.props.thunkInitGrid(randomTestGrid);
   }
+
   clickHandler(i, j) {
     this.props.thunkChangeCell(i, j);
   }
+
   render() {
     const newestGen = this.props.grid[0];
     return (
