@@ -18,12 +18,6 @@ Redux is used as state management to store the state of each individual cell, wh
 
 Three.js is used to render the Game of Life in 3D.
 
-To deploy locally:
-
-1. npm install
-2. npm run start-server
-3. open locally on port 5500
-
 Functionality:
 
 - Play button starts simulation
